@@ -22,19 +22,25 @@ function Home() {
   }
   
   const handleLogOut = async () => {
-  console.log("Logout button clicked");
-
   try {
-    const data = await axios.post(
+    console.log("Logout button clicked");
+
+    await axios.post(
       serverURL + "/api/logout",
       {},
-      { withCredentials: true }
+      {
+        withCredentials: true,
+      }
     );
 
-    console.log("Logout response:", data);
-
     setuserData(null);
-    navigate("/login");
+
+    localStorage.clear();
+    sessionStorage.clear();
+
+    navigate("/login", { replace: true });
+
+    window.location.reload();
   } catch (error) {
     console.log("Logout error:", error);
   }
@@ -56,9 +62,15 @@ function Home() {
       , Welcome to your Home page
     </p>
 
-    <button className="bg-[#f3e824] text-black px-4 py-2 rounded-lg" onClick={handleLogOut}>
-      LogOut
-    </button>
+    <button
+  className="bg-[#f3e824] text-black px-4 py-2 rounded-lg"
+  onClick={() => {
+    console.log("BUTTON WORKING");
+    handleLogOut();
+  }}
+>
+  LogOut
+</button>
   </div>
 );
 }
