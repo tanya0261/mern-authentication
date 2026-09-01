@@ -21,16 +21,24 @@ function Home() {
     );
   }
   
-  const handleLogOut = async ()=>{
-    try {
-       let data =  await axios.post(serverURL + "/api/logout",{},
-        {
-            withCredentials:true
-        })
-    } catch (error) {
-        console.log(error);
-    }
+  const handleLogOut = async () => {
+  console.log("Logout button clicked");
+
+  try {
+    const data = await axios.post(
+      serverURL + "/api/logout",
+      {},
+      { withCredentials: true }
+    );
+
+    console.log("Logout response:", data);
+
+    setuserData(null);
+    navigate("/login");
+  } catch (error) {
+    console.log("Logout error:", error);
   }
+};
     return (
   <div className="w-full h-screen bg-[#2b236e] flex flex-col items-center justify-center gap-5">
      <div className="w-[120px] h-[120px] rounded-full overflow-hidden bg-white relative border border-white">
