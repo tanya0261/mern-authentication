@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import Home from "./pages/home";
+import Home from "./pages/TempHome";
 import { dataContext } from "./context/UserContext";
 
 function App() {
