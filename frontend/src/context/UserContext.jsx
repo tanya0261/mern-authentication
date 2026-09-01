@@ -7,7 +7,7 @@ function UserContext({ children }) {
   const [userData, setuserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const serverURL = "http://localhost:8000";
+  const serverURL = "https://mern-authentication-vf0f.onrender.com";
 
   const getUserData = async () => {
     try {
